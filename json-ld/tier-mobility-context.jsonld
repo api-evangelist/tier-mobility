@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "gbfs": "https://github.com/MobilityData/gbfs/blob/master/gbfs.md#",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "TierMobility": {
+      "@id": "schema:Organization",
+      "@type": "@id"
+    },
+    "Dott": {
+      "@id": "schema:Organization",
+      "@type": "@id"
+    },
+    "System": "gbfs:system_information",
+    "Vehicle": {
+      "@id": "gbfs:vehicle",
+      "@type": "schema:Vehicle"
+    },
+    "Scooter": {
+      "@id": "schema:Vehicle",
+      "vehicleConfiguration": "scooter"
+    },
+    "EBike": {
+      "@id": "schema:Vehicle",
+      "vehicleConfiguration": "electric_assist_bicycle"
+    },
+    "PricingPlan": "schema:PriceSpecification",
+    "GeofencingZone": "gbfs:geofencing_zone",
+    "Station": {
+      "@id": "schema:CivicStructure",
+      "@type": "@id"
+    },
+    "bike_id": "schema:identifier",
+    "vehicle_type_id": "schema:identifier",
+    "form_factor": "schema:vehicleConfiguration",
+    "propulsion_type": "schema:fuelType",
+    "current_fuel_percent": "schema:fuelCapacity",
+    "current_range_meters": "schema:vehicleRange",
+    "lat": "schema:latitude",
+    "lon": "schema:longitude",
+    "currency": "schema:priceCurrency",
+    "price": "schema:price",
+    "rental_uris": "schema:potentialAction",
+    "system_id": "schema:identifier",
+    "timezone": "schema:additionalProperty"
+  }
+}

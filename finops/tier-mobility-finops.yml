@@ -1,0 +1,52 @@
+specVersion: focus/1.0
+provider: tier-mobility
+description: >-
+  Dott (formerly TIER) does not sell API access — the public GBFS
+  feeds are free. The provider's commercial surface is consumer ride
+  revenue (per-unlock + per-minute), enterprise/regulator data
+  partnerships, and city-mobility contracts. FinOps relevance is
+  therefore from the *consumer* side: a rider's total ride cost is the
+  unit of cost analysis. Companies using Dott for corporate mobility
+  (e.g. travel reimbursement, expense pools) can model spend using
+  the categories below.
+billingProfile:
+  model: consumer-pay-as-you-go
+  invoicedTo: rider
+  currencyDefault: EUR
+  costCategories:
+    - id: unlock
+      name: Unlock Fee
+      description: Fixed per-ride charge at vehicle activation.
+      pricingPlanField: price
+      source: system_pricing_plans.json
+    - id: usage
+      name: Per-Minute Usage
+      description: Variable charge per minute of ride time.
+      pricingPlanField: per_min_pricing[*].rate
+      source: system_pricing_plans.json
+    - id: parking
+      name: Parking / Geofence Fee
+      description: >-
+        Surcharge applied when a vehicle is parked outside a permitted
+        zone, defined per-city in geofencing_zones rules.
+      source: geofencing_zones.json
+  reportingDimensions:
+    - rider
+    - system_id
+    - vehicle_type_id
+    - pricing_plan_id
+    - currency
+    - ride_duration_minutes
+  exposedToFinOps:
+    apiCost: false
+    consumerCost: true
+    enterpriseInvoice: contact-sales
+notes:
+  - >-
+    There is no `cost_report` endpoint comparable to AI-API providers.
+    Consumer billing is settled inside the Dott rider app; receipts
+    are emailed per ride.
+  - >-
+    Enterprise mobility programs (companies offering Dott credits to
+    employees) negotiate consolidated billing with Dott directly and
+    are out of scope for the public GBFS surface.

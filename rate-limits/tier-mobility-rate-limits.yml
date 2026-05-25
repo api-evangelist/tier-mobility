@@ -1,0 +1,41 @@
+specVersion: api-commons-rate-limits/0.1
+provider: tier-mobility
+description: >-
+  Dott (formerly TIER) publishes no documented rate limits for its
+  public GBFS feeds. The MobilityData GBFS spec recommends that
+  consumers respect the per-feed `ttl` field returned in every
+  response, and not poll more frequently than the publisher's update
+  cadence. Observed cadence on the Dott feeds: real-time feeds
+  (free_bike_status, station_status) update every few seconds with
+  `ttl: 0` (no client-side cache), while static feeds
+  (system_information, vehicle_types, pricing_plans, geofencing_zones)
+  refresh on order of minutes.
+policies:
+  - id: gbfs-default
+    description: >-
+      No published per-IP or per-key rate limit. Excessive polling may
+      result in CDN-level throttling.
+    scope: ip
+    type: best-effort
+    headers: []
+    limits: []
+  - id: gbfs-ttl-respect
+    description: >-
+      Clients SHOULD respect the `ttl` field returned in the body of
+      each GBFS feed. Treat `ttl: 0` as "always fetch fresh, but no
+      more often than once per second per system."
+    scope: per-feed
+    type: cache-control
+    field: ttl
+    limits:
+      - unit: second
+        value: 1
+        per: request
+        description: Recommended minimum poll interval per system per feed.
+notes:
+  - >-
+    There is no consumer-facing API key. Authentication is unnecessary
+    for GBFS feed access.
+  - >-
+    Operator-grade integrations (regulators, MaaS aggregators) should
+    contact Dott directly for higher-volume access patterns.

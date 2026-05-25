@@ -1,0 +1,64 @@
+specVersion: api-commons-plans/0.1
+provider: tier-mobility
+description: >-
+  Dott (formerly TIER) consumer pricing is per-ride, set per city and
+  per vehicle type, and published live via the GBFS
+  system_pricing_plans feed at
+  https://gbfs.api.ridedott.com/public/v2/{city}/system_pricing_plans.json.
+  There is no public B2C "plan" with a subscription fee in most
+  markets; consumers pay unlock + per-minute. Long-term passes
+  (day/week/month) are offered in selected cities through the Dott app
+  but are not exposed via GBFS. Below are representative live rates
+  pulled from the public feed.
+plans:
+  - id: berlin-scooter-payg
+    name: Berlin Scooter Pay-As-You-Go
+    audience: Consumer
+    type: PayAsYouGo
+    description: Per-ride pricing for e-scooters in Berlin.
+    currency: EUR
+    entries:
+      - geo: DE
+        unit: 1
+        label: Unlock Fee
+        price: 0.49
+        metric: ride
+        timeFrame: ride
+        description: Charged once at the start of each ride.
+      - geo: DE
+        unit: 1
+        label: Per-Minute Rate
+        price: 0.27
+        metric: minute
+        timeFrame: minute
+        description: Charged for each minute of ride time.
+    source: https://gbfs.api.ridedott.com/public/v2/berlin/system_pricing_plans.json
+  - id: berlin-bicycle-payg
+    name: Berlin E-Bike Pay-As-You-Go
+    audience: Consumer
+    type: PayAsYouGo
+    description: Per-ride pricing for e-bikes in Berlin.
+    currency: EUR
+    entries:
+      - geo: DE
+        unit: 1
+        label: Unlock Fee
+        price: 0.49
+        metric: ride
+        timeFrame: ride
+      - geo: DE
+        unit: 1
+        label: Per-Minute Rate
+        price: 0.27
+        metric: minute
+        timeFrame: minute
+    source: https://gbfs.api.ridedott.com/public/v2/berlin/system_pricing_plans.json
+notes:
+  - >-
+    Rates vary by city — fetch the live feed for each `system_id` to
+    get authoritative pricing. Example feeds: Paris, London, Madrid,
+    Rome, Brussels, Stockholm, Dubai, Tel Aviv, Warsaw.
+  - >-
+    GBFS feeds expose only the consumer rate card. Dott does not
+    publish public API pricing because the GBFS API itself is free and
+    unauthenticated.

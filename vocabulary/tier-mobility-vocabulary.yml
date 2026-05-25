@@ -1,0 +1,37 @@
+name: TIER / Dott Shared Mobility Vocabulary
+description: >-
+  Terms used across the TIER / Dott GBFS surface and rider-facing app.
+  After the 2024 TIER + Dott merger, the unified European fleet trades
+  under the Dott brand on the ridedott.com domain.
+terms:
+  - term: System
+    definition: A city or operational zone (e.g. berlin, paris, dubai) for which a distinct GBFS feed is published.
+    aliases: [City, Zone, Market]
+  - term: Vehicle
+    definition: A single shared-mobility unit (e-scooter or e-bike) tracked in real time via GBFS free_bike_status.
+  - term: E-Scooter
+    definition: A standing electric kick-scooter. Form factor `scooter`, propulsion `electric`. Max range ~30 km per charge.
+  - term: E-Bike
+    definition: A pedal-assist electric bicycle. Form factor `bicycle`, propulsion `electric_assist`. Max range ~100 km per charge.
+  - term: Unlock Fee
+    definition: Fixed price charged once at the start of a ride (e.g. 0.49 EUR in Berlin).
+  - term: Per-Minute Rate
+    definition: Variable rate billed per minute of ride time (e.g. 0.27 EUR/min in Berlin).
+  - term: Pricing Plan
+    definition: A per-city, per-vehicle-type rate card identified by `plan_id` and referenced from each vehicle.
+  - term: Geofencing Zone
+    definition: A polygon with ride/park/speed rules (no-ride, no-park, slow-zone, parking-required).
+  - term: Free-Floating
+    definition: A deployment model where vehicles park anywhere within the operational zone rather than at fixed docks. Dott primarily operates free-floating fleets.
+  - term: Rental URI
+    definition: A deep link that opens the Dott rider app at the unlock screen for a specific vehicle.
+  - term: Battery Level
+    definition: Reported via `current_fuel_percent` (0.0–1.0) and `current_range_meters` (estimated remaining range).
+  - term: GBFS
+    definition: General Bikeshare Feed Specification — the MobilityData open standard for publishing shared-mobility data. TIER/Dott implement GBFS 2.3.
+  - term: TIER
+    definition: TIER Mobility, founded in Berlin in 2018. Merged with Dott in 2024 to form the combined "Dott" European micromobility champion.
+  - term: Dott
+    definition: Micromobility operator founded in Amsterdam in 2018; post-2024 merger, the surviving brand for the combined TIER + Dott fleet operating in 400+ European and Middle Eastern cities.
+  - term: MaaS
+    definition: Mobility-as-a-Service — third-party trip planners and journey-planning apps that aggregate Dott alongside public transit and other modes via GBFS.

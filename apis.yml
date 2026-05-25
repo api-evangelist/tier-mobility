@@ -1,0 +1,145 @@
+aid: tier-mobility
+name: TIER
+description: >-
+  TIER Mobility was a Berlin-headquartered shared electric micromobility
+  operator founded in 2018 by Lawrence Leuschner, Julian Blessin, and
+  Matthias Laug, providing e-scooter, e-bike, and e-moped sharing across
+  European and Middle Eastern cities. In March 2024, TIER merged with
+  Amsterdam-based Dott to form the combined European micromobility
+  champion that now trades under the Dott brand on ridedott.com,
+  operating in 400+ cities across roughly 22 countries including
+  Germany, France, the United Kingdom, Italy, Spain, the Netherlands,
+  Belgium, Sweden, Norway, Finland, Denmark, Austria, Switzerland,
+  Poland, Greece, Hungary, Israel, Saudi Arabia, Qatar, and the UAE.
+  All public real-time data — fleet positions, battery levels, vehicle
+  types, pricing plans, stations, and geofencing zones — is published
+  via GBFS 2.3 (General Bikeshare Feed Specification) endpoints at
+  https://gbfs.api.ridedott.com/public/v2/{system_id}/, with one
+  `system_id` per city. There is no consumer authentication or paid
+  API tier; feeds are open data consumed by city regulators, MaaS
+  aggregators, and trip-planning apps.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Mobility
+  - Micromobility
+  - Shared Mobility
+  - E-Scooter
+  - E-Bike
+  - Transportation
+  - Smart Cities
+  - MaaS
+  - GBFS
+  - Open Data
+  - Europe
+  - Real-Time
+url: https://raw.githubusercontent.com/api-evangelist/tier-mobility/refs/heads/main/apis.yml
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.20'
+apis:
+  - aid: tier-mobility:tier-mobility-gbfs
+    name: TIER / Dott GBFS API
+    description: >-
+      GBFS 2.3 public feeds covering every Dott (formerly TIER) city.
+      Per-city endpoints return real-time vehicle positions and battery
+      state (free_bike_status), vehicle types, pricing plans, station
+      information and status, and geofencing zones. Unauthenticated,
+      free, and aligned with the MobilityData GBFS standard.
+    humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+    tags:
+      - GBFS
+      - Micromobility
+      - Real-Time
+      - Open Data
+    properties:
+      - type: GBFS
+        url: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+      - type: OpenAPI
+        url: openapi/tier-mobility-gbfs-openapi.yml
+      - type: JSONSchema
+        url: json-schema/tier-mobility-vehicle-schema.json
+      - type: JSONSchema
+        url: json-schema/tier-mobility-pricing-plan-schema.json
+      - type: JSONLD
+        url: json-ld/tier-mobility-context.jsonld
+      - type: NaftikoCapability
+        url: capabilities/tier-mobility-gbfs.yaml
+      - type: SpectralRules
+        url: rules/tier-mobility-rules.yml
+      - type: Vocabulary
+        url: vocabulary/tier-mobility-vocabulary.yml
+      - type: Plans
+        url: plans/tier-mobility-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/tier-mobility-rate-limits.yml
+      - type: FinOps
+        url: finops/tier-mobility-finops.yml
+      - type: Example
+        url: examples/tier-mobility-gbfs-discovery-example.json
+      - type: Example
+        url: examples/tier-mobility-free-bike-status-example.json
+      - type: Example
+        url: examples/tier-mobility-vehicle-types-example.json
+      - type: Example
+        url: examples/tier-mobility-pricing-plans-example.json
+      - type: Standard
+        url: https://github.com/MobilityData/gbfs
+common:
+  - type: Website
+    url: https://ridedott.com/
+  - type: Company
+    url: https://ridedott.com/about
+  - type: Newsroom
+    url: https://ridedott.com/press
+  - type: Careers
+    url: https://ridedott.com/careers
+  - type: PrivacyPolicy
+    url: https://ridedott.com/privacy
+  - type: TermsOfService
+    url: https://ridedott.com/terms
+  - type: Support
+    url: https://help.ridedott.com/
+  - type: iOSApp
+    url: https://apps.apple.com/app/id1440301673
+  - type: AndroidApp
+    url: https://play.google.com/store/apps/details?id=com.ridedott.rider
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/ridedott
+  - type: Twitter
+    url: https://twitter.com/ridedott
+  - type: Standard
+    url: https://github.com/MobilityData/gbfs
+    name: GBFS Specification
+  - type: GBFS
+    url: https://gbfs.api.ridedott.com/public/v2/gbfs_versions.json
+    name: GBFS Versions
+  - type: SystemsRegistry
+    url: https://github.com/MobilityData/gbfs/blob/master/systems.csv
+    name: MobilityData GBFS Systems Registry
+  - type: Features
+    data:
+      - >-
+        GBFS 2.3 feeds for 340+ Dott (formerly TIER) systems across
+        Europe, the Middle East, and the Gulf
+      - Real-time free-floating e-scooter and e-bike fleet positions
+      - Battery level and remaining range per vehicle
+      - Per-city, per-vehicle-type pricing plans (unlock + per-minute)
+      - Geofencing zones with ride / park / speed rules
+      - Station information and status (in dock-based markets)
+      - Vehicle type catalogue (`dott_scooter`, `dott_bicycle`)
+      - Rental deep-link URIs (Android, iOS) for unlock flows
+      - Multilingual rider apps (16+ languages)
+      - Open, unauthenticated public data — no API key required
+      - Merger note: TIER + Dott (2024) — all feeds unified under ridedott.com
+    sources:
+      - https://ridedott.com/
+      - https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+      - https://github.com/MobilityData/gbfs/blob/master/systems.csv
+    updated: '2026-05-25'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

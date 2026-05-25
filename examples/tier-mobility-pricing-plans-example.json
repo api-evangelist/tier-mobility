@@ -1,0 +1,31 @@
+{
+  "last_updated": 1779729661,
+  "ttl": 0,
+  "version": "2.3",
+  "data": {
+    "plans": [
+      {
+        "plan_id": "1f88b4d3-9307-52d7-9f59-60bbfcc39c37",
+        "name": "berlin-bicycle-system-pricing-plan",
+        "description": "Pricing information for Berlin (bicycle): Riders pay 0.49 EUR to unlock and 0.27 EUR per minute.",
+        "currency": "EUR",
+        "price": 0.49,
+        "is_taxable": false,
+        "per_min_pricing": [
+          { "interval": 1, "rate": 0.27, "start": 1 }
+        ]
+      },
+      {
+        "plan_id": "c92707cd-df0b-46d0-b25e-087ca9a200dc",
+        "name": "berlin-scooter-system-pricing-plan",
+        "description": "Pricing information for Berlin (scooter): Riders pay 0.49 EUR to unlock and 0.27 EUR per minute.",
+        "currency": "EUR",
+        "price": 0.49,
+        "is_taxable": false,
+        "per_min_pricing": [
+          { "interval": 1, "rate": 0.27, "start": 1 }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "last_updated": 1779729160,
+  "ttl": 0,
+  "version": "2.3",
+  "data": {
+    "bikes": [
+      {
+        "bike_id": "cf9c0ea1-4b25-4d01-9764-2104a41ea5bc",
+        "lat": 52.557441,
+        "lon": 13.208351,
+        "is_reserved": false,
+        "is_disabled": false,
+        "current_range_meters": 26402,
+        "current_fuel_percent": 0.91,
+        "vehicle_type_id": "dott_scooter",
+        "pricing_plan_id": "c92707cd-df0b-46d0-b25e-087ca9a200dc",
+        "last_reported": 1779729160,
+        "rental_uris": {
+          "android": "https://go.ridedott.com/vehicles/cf9c0ea1-4b25-4d01-9764-2104a41ea5bc?platform=android",
+          "ios": "https://go.ridedott.com/vehicles/cf9c0ea1-4b25-4d01-9764-2104a41ea5bc?platform=ios"
+        }
+      }
+    ]
+  }
+}

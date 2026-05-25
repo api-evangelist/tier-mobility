@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tier-mobility/main/json-schema/tier-mobility-pricing-plan-schema.json",
+  "title": "TIER/Dott Pricing Plan",
+  "description": "A per-city, per-vehicle-type pricing plan as published in the Dott GBFS 2.3 system_pricing_plans feed.",
+  "type": "object",
+  "required": ["plan_id", "currency", "price", "name"],
+  "properties": {
+    "plan_id": {
+      "type": "string",
+      "description": "Stable UUID identifying the plan within the city/system."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name (e.g. `berlin-scooter-system-pricing-plan`)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Free-text description (typically: `Riders pay X EUR to unlock and Y EUR per minute.`)."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code (e.g. EUR, GBP, SEK, AED, ILS).",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "price": {
+      "type": "number",
+      "format": "float",
+      "description": "Unlock price charged once per ride.",
+      "minimum": 0
+    },
+    "is_taxable": {
+      "type": "boolean",
+      "description": "Whether the plan price is taxable."
+    },
+    "per_min_pricing": {
+      "type": "array",
+      "description": "Stepped per-minute pricing intervals.",
+      "items": {
+        "type": "object",
+        "required": ["interval", "rate", "start"],
+        "properties": {
+          "interval": { "type": "integer", "description": "Length of each pricing step in minutes." },
+          "rate": { "type": "number", "format": "float", "description": "Cost per step in the plan's currency." },
+          "start": { "type": "integer", "description": "Minute at which this tier becomes active." }
+        }
+      }
+    }
+  }
+}

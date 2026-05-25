@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tier-mobility/main/json-schema/tier-mobility-vehicle-schema.json",
+  "title": "TIER/Dott Vehicle",
+  "description": "A free-floating shared micromobility vehicle (e-scooter or e-bike) operated by Dott (formerly TIER), as published in the GBFS 2.3 free_bike_status feed.",
+  "type": "object",
+  "required": ["bike_id", "lat", "lon", "is_reserved", "is_disabled"],
+  "properties": {
+    "bike_id": {
+      "type": "string",
+      "description": "Rotating opaque identifier for the vehicle (UUID)."
+    },
+    "lat": {
+      "type": "number",
+      "format": "double",
+      "description": "Latitude of the vehicle's last reported location.",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "lon": {
+      "type": "number",
+      "format": "double",
+      "description": "Longitude of the vehicle's last reported location.",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "is_reserved": {
+      "type": "boolean",
+      "description": "True when the vehicle is currently reserved by a rider."
+    },
+    "is_disabled": {
+      "type": "boolean",
+      "description": "True when the vehicle is offline (low battery, maintenance, out of zone)."
+    },
+    "current_range_meters": {
+      "type": "integer",
+      "description": "Estimated remaining range in meters at the current battery level.",
+      "minimum": 0
+    },
+    "current_fuel_percent": {
+      "type": "number",
+      "format": "float",
+      "description": "Battery level as a fraction between 0 and 1.",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "vehicle_type_id": {
+      "type": "string",
+      "description": "References a vehicle_type from vehicle_types.json (e.g. `dott_scooter`, `dott_bicycle`)."
+    },
+    "pricing_plan_id": {
+      "type": "string",
+      "description": "References a plan from system_pricing_plans.json."
+    },
+    "last_reported": {
+      "type": "integer",
+      "format": "int64",
+      "description": "POSIX timestamp of the vehicle's last telemetry update."
+    },
+    "rental_uris": {
+      "type": "object",
+      "description": "Deep links for unlocking the vehicle on each platform.",
+      "properties": {
+        "android": { "type": "string", "format": "uri" },
+        "ios": { "type": "string", "format": "uri" },
+        "web": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

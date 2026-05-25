@@ -1,0 +1,23 @@
+{
+  "last_updated": 1779729764,
+  "ttl": 0,
+  "version": "2.3",
+  "data": {
+    "vehicle_types": [
+      {
+        "vehicle_type_id": "dott_scooter",
+        "form_factor": "scooter",
+        "propulsion_type": "electric",
+        "max_range_meters": 30000,
+        "pricing_plan_ids": ["c92707cd-df0b-46d0-b25e-087ca9a200dc"]
+      },
+      {
+        "vehicle_type_id": "dott_bicycle",
+        "form_factor": "bicycle",
+        "propulsion_type": "electric_assist",
+        "max_range_meters": 100000,
+        "pricing_plan_ids": ["1f88b4d3-9307-52d7-9f59-60bbfcc39c37"]
+      }
+    ]
+  }
+}
