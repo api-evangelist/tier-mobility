@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIER / Dott GBFS API",
+    "version": "2.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List GBFS Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/gbfs_versions.json"
+          },
+          "docs": "Returns all GBFS schema versions exposed by Dott across systems."
+        },
+        {
+          "info": {
+            "name": "Get GBFS Discovery Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/gbfs.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Returns the GBFS auto-discovery document for a given city/system, listing every available feed URL."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get System Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/system_information.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Returns operator name, language, timezone, rental app deep links, and system identifier for the given city."
+        },
+        {
+          "info": {
+            "name": "Get System Pricing Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/system_pricing_plans.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Returns unlock price, per-minute rate, currency, and plan IDs for each vehicle type in the system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vehicles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Vehicle Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/vehicle_types.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Returns the form factors (scooter, bicycle), propulsion types, max range, and pricing-plan associations for vehicles operated in the system."
+        },
+        {
+          "info": {
+            "name": "Get Free Vehicle Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/free_bike_status.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Real-time list of free-floating vehicles available for rent, including position, battery level (`current_fuel_percent`), remaining range, pricing plan, and rental URIs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Station Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/station_information.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Static station definitions (where stations are deployed in the system)."
+        },
+        {
+          "info": {
+            "name": "Get Station Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/station_status.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Real-time docking station availability and vehicle counts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Geofencing Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/geofencing_zones.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "GeoJSON FeatureCollection describing no-ride, no-park, low-speed, and operational zones within the system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
