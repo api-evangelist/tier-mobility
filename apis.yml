@@ -66,15 +66,15 @@ apis:
         url: rate-limits/tier-mobility-rate-limits.yml
       - type: FinOps
         url: finops/tier-mobility-finops.yml
-      - type: Example
+      - type: Examples
         url: examples/tier-mobility-gbfs-discovery-example.json
-      - type: Example
+      - type: Examples
         url: examples/tier-mobility-free-bike-status-example.json
-      - type: Example
+      - type: Examples
         url: examples/tier-mobility-vehicle-types-example.json
-      - type: Example
+      - type: Examples
         url: examples/tier-mobility-pricing-plans-example.json
-      - type: Standard
+      - type: Standards
         url: https://github.com/MobilityData/gbfs
 common:
   - type: Website
@@ -99,7 +99,7 @@ common:
     url: https://www.linkedin.com/company/ridedott
   - type: Twitter
     url: https://twitter.com/ridedott
-  - type: Standard
+  - type: Standards
     url: https://github.com/MobilityData/gbfs
     name: GBFS Specification
   - type: GBFS
