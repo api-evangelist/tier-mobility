@@ -77,6 +77,8 @@ apis:
       - type: Standards
         url: https://github.com/MobilityData/gbfs
 common:
+  - type: DomainSecurity
+    url: security/tier-mobility-domain-security.yml
   - type: Website
     url: https://ridedott.com/
   - type: Company
@@ -102,6 +104,8 @@ common:
   - type: Standards
     url: https://github.com/MobilityData/gbfs
     name: GBFS Specification
+  - url: https://ridedott.com/feed
+    type: Blog
   - type: GBFS
     url: https://gbfs.api.ridedott.com/public/v2/gbfs_versions.json
     name: GBFS Versions
