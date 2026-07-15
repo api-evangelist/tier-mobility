@@ -77,6 +77,8 @@ apis:
       - type: Standards
         url: https://github.com/MobilityData/gbfs
 common:
+  - type: AgenticAccess
+    url: agentic-access/tier-mobility-agentic-access.yml
   - type: DomainSecurity
     url: security/tier-mobility-domain-security.yml
   - type: Website
