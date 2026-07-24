@@ -1,0 +1,148 @@
+openapi: 3.0.3
+info:
+  title: TIER / Dott GBFS Discovery System API
+  version: '2.3'
+  description: 'Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate "system" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.'
+  contact:
+    name: Dott (formerly TIER)
+    url: https://ridedott.com/
+servers:
+- url: https://gbfs.api.ridedott.com/public/v2
+  description: Production GBFS feeds (TIER and Dott systems unified)
+tags:
+- name: System
+  description: System-level metadata and pricing
+paths:
+  /{system_id}/system_information.json:
+    get:
+      tags:
+      - System
+      summary: Get System Information
+      description: Returns operator name, language, timezone, rental app deep links, and system identifier for the given city.
+      operationId: getSystemInformation
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: System information feed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemInformation'
+  /{system_id}/system_pricing_plans.json:
+    get:
+      tags:
+      - System
+      summary: Get System Pricing Plans
+      description: Returns unlock price, per-minute rate, currency, and plan IDs for each vehicle type in the system.
+      operationId: getSystemPricingPlans
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Pricing plans feed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemPricingPlans'
+components:
+  schemas:
+    SystemPricingPlans:
+      allOf:
+      - $ref: '#/components/schemas/FeedMeta'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              plans:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    plan_id:
+                      type: string
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    currency:
+                      type: string
+                    price:
+                      type: number
+                      format: float
+                    is_taxable:
+                      type: boolean
+                    per_min_pricing:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          interval:
+                            type: integer
+                          rate:
+                            type: number
+                            format: float
+                          start:
+                            type: integer
+    SystemInformation:
+      allOf:
+      - $ref: '#/components/schemas/FeedMeta'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              system_id:
+                type: string
+              language:
+                type: string
+              name:
+                type: string
+              timezone:
+                type: string
+              rental_apps:
+                type: object
+                properties:
+                  android:
+                    type: object
+                    properties:
+                      discovery_uri:
+                        type: string
+                      store_uri:
+                        type: string
+                        format: uri
+                  ios:
+                    type: object
+                    properties:
+                      discovery_uri:
+                        type: string
+                      store_uri:
+                        type: string
+                        format: uri
+    FeedMeta:
+      type: object
+      required:
+      - last_updated
+      - ttl
+      - version
+      properties:
+        last_updated:
+          type: integer
+          format: int64
+          description: POSIX timestamp when the feed was last updated.
+        ttl:
+          type: integer
+          description: Seconds until the next regeneration.
+        version:
+          type: string
+          example: '2.3'
+  parameters:
+    SystemId:
+      name: system_id
+      in: path
+      required: true
+      description: The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry.
+      schema:
+        type: string
+        example: berlin

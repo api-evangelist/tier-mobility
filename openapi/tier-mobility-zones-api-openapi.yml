@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: TIER / Dott GBFS Discovery Zones API
+  version: '2.3'
+  description: 'Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate "system" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.'
+  contact:
+    name: Dott (formerly TIER)
+    url: https://ridedott.com/
+servers:
+- url: https://gbfs.api.ridedott.com/public/v2
+  description: Production GBFS feeds (TIER and Dott systems unified)
+tags:
+- name: Zones
+  description: Geofencing rules and operational zones
+paths:
+  /{system_id}/geofencing_zones.json:
+    get:
+      tags:
+      - Zones
+      summary: Get Geofencing Zones
+      description: GeoJSON FeatureCollection describing no-ride, no-park, low-speed, and operational zones within the system.
+      operationId: getGeofencingZones
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Geofencing zones feed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeofencingZones'
+components:
+  schemas:
+    GeofencingZones:
+      allOf:
+      - $ref: '#/components/schemas/FeedMeta'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              geofencing_zones:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  features:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - Feature
+                        geometry:
+                          type: object
+                        properties:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            start:
+                              type: integer
+                            end:
+                              type: integer
+                            rules:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  vehicle_type_id:
+                                    type: array
+                                    items:
+                                      type: string
+                                  ride_allowed:
+                                    type: boolean
+                                  ride_through_allowed:
+                                    type: boolean
+                                  maximum_speed_kph:
+                                    type: integer
+                                  station_parking:
+                                    type: boolean
+    FeedMeta:
+      type: object
+      required:
+      - last_updated
+      - ttl
+      - version
+      properties:
+        last_updated:
+          type: integer
+          format: int64
+          description: POSIX timestamp when the feed was last updated.
+        ttl:
+          type: integer
+          description: Seconds until the next regeneration.
+        version:
+          type: string
+          example: '2.3'
+  parameters:
+    SystemId:
+      name: system_id
+      in: path
+      required: true
+      description: The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry.
+      schema:
+        type: string
+        example: berlin

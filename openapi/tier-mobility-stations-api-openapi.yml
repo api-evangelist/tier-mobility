@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: TIER / Dott GBFS Discovery Stations API
+  version: '2.3'
+  description: 'Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate "system" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.'
+  contact:
+    name: Dott (formerly TIER)
+    url: https://ridedott.com/
+servers:
+- url: https://gbfs.api.ridedott.com/public/v2
+  description: Production GBFS feeds (TIER and Dott systems unified)
+tags:
+- name: Stations
+  description: Station information and availability
+paths:
+  /{system_id}/station_information.json:
+    get:
+      tags:
+      - Stations
+      summary: Get Station Information
+      description: Static station definitions (where stations are deployed in the system).
+      operationId: getStationInformation
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Station information feed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StationInformation'
+  /{system_id}/station_status.json:
+    get:
+      tags:
+      - Stations
+      summary: Get Station Status
+      description: Real-time docking station availability and vehicle counts.
+      operationId: getStationStatus
+      parameters:
+      - $ref: '#/components/parameters/SystemId'
+      responses:
+        '200':
+          description: Station status feed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StationStatus'
+components:
+  parameters:
+    SystemId:
+      name: system_id
+      in: path
+      required: true
+      description: The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry.
+      schema:
+        type: string
+        example: berlin
+  schemas:
+    StationInformation:
+      allOf:
+      - $ref: '#/components/schemas/FeedMeta'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              stations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    station_id:
+                      type: string
+                    name:
+                      type: string
+                    lat:
+                      type: number
+                      format: double
+                    lon:
+                      type: number
+                      format: double
+                    capacity:
+                      type: integer
+    FeedMeta:
+      type: object
+      required:
+      - last_updated
+      - ttl
+      - version
+      properties:
+        last_updated:
+          type: integer
+          format: int64
+          description: POSIX timestamp when the feed was last updated.
+        ttl:
+          type: integer
+          description: Seconds until the next regeneration.
+        version:
+          type: string
+          example: '2.3'
+    StationStatus:
+      allOf:
+      - $ref: '#/components/schemas/FeedMeta'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              stations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    station_id:
+                      type: string
+                    num_bikes_available:
+                      type: integer
+                    num_docks_available:
+                      type: integer
+                    is_installed:
+                      type: boolean
+                    is_renting:
+                      type: boolean
+                    is_returning:
+                      type: boolean
+                    last_reported:
+                      type: integer
+                      format: int64
