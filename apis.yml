@@ -12,9 +12,21 @@ description: >-
   `system_id` per city. There is no consumer authentication or paid API tier; feeds are open data consumed by city
   regulators, MaaS aggregators, and trip-planning apps.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Paid
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tier-mobility.png
 tags:
   - Mobility
   - Micromobility
@@ -33,49 +45,191 @@ created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.20'
 apis:
-  - aid: tier-mobility:tier-mobility-gbfs
-    name: TIER / Dott GBFS API
-    description: >-
-      GBFS 2.3 public feeds covering every Dott (formerly TIER) city. Per-city endpoints return real-time vehicle
-      positions and battery state (free_bike_status), vehicle types, pricing plans, station information and status, and
-      geofencing zones. Unauthenticated, free, and aligned with the MobilityData GBFS standard.
-    humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
-    tags:
-      - GBFS
-      - Micromobility
-      - Real-Time
-      - Open Data
-    properties:
-      - type: GBFS
-        url: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
-      - type: OpenAPI
-        url: openapi/tier-mobility-gbfs-openapi.yml
-      - type: JSONSchema
-        url: json-schema/tier-mobility-vehicle-schema.json
-      - type: JSONSchema
-        url: json-schema/tier-mobility-pricing-plan-schema.json
-      - type: JSONLD
-        url: json-ld/tier-mobility-context.jsonld
-      - type: SpectralRules
-        url: rules/tier-mobility-rules.yml
-      - type: Vocabulary
-        url: vocabulary/tier-mobility-vocabulary.yml
-      - type: Plans
-        url: plans/tier-mobility-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/tier-mobility-rate-limits.yml
-      - type: FinOps
-        url: finops/tier-mobility-finops.yml
-      - type: Examples
-        url: examples/tier-mobility-gbfs-discovery-example.json
-      - type: Examples
-        url: examples/tier-mobility-free-bike-status-example.json
-      - type: Examples
-        url: examples/tier-mobility-vehicle-types-example.json
-      - type: Examples
-        url: examples/tier-mobility-pricing-plans-example.json
-      - type: Standards
-        url: https://github.com/MobilityData/gbfs
+- aid: tier-mobility:tier-mobility-discovery-api
+  name: TIER Discovery API
+  description: GBFS discovery and versioning
+  humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/tier-mobility-discovery-api-openapi.yml
+  - type: GBFS
+    url: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-vehicle-schema.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-pricing-plan-schema.json
+  - type: JSONLD
+    url: json-ld/tier-mobility-context.jsonld
+  - type: SpectralRules
+    url: rules/tier-mobility-rules.yml
+  - type: Vocabulary
+    url: vocabulary/tier-mobility-vocabulary.yml
+  - type: Plans
+    url: plans/tier-mobility-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tier-mobility-rate-limits.yml
+  - type: FinOps
+    url: finops/tier-mobility-finops.yml
+  - type: Examples
+    url: examples/tier-mobility-gbfs-discovery-example.json
+  - type: Examples
+    url: examples/tier-mobility-free-bike-status-example.json
+  - type: Examples
+    url: examples/tier-mobility-vehicle-types-example.json
+  - type: Examples
+    url: examples/tier-mobility-pricing-plans-example.json
+  - type: Standards
+    url: https://github.com/MobilityData/gbfs
+- aid: tier-mobility:tier-mobility-stations-api
+  name: TIER Stations API
+  description: Station information and availability
+  humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  tags:
+  - Stations
+  properties:
+  - type: OpenAPI
+    url: openapi/tier-mobility-stations-api-openapi.yml
+  - type: GBFS
+    url: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-vehicle-schema.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-pricing-plan-schema.json
+  - type: JSONLD
+    url: json-ld/tier-mobility-context.jsonld
+  - type: SpectralRules
+    url: rules/tier-mobility-rules.yml
+  - type: Vocabulary
+    url: vocabulary/tier-mobility-vocabulary.yml
+  - type: Plans
+    url: plans/tier-mobility-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tier-mobility-rate-limits.yml
+  - type: FinOps
+    url: finops/tier-mobility-finops.yml
+  - type: Examples
+    url: examples/tier-mobility-gbfs-discovery-example.json
+  - type: Examples
+    url: examples/tier-mobility-free-bike-status-example.json
+  - type: Examples
+    url: examples/tier-mobility-vehicle-types-example.json
+  - type: Examples
+    url: examples/tier-mobility-pricing-plans-example.json
+  - type: Standards
+    url: https://github.com/MobilityData/gbfs
+- aid: tier-mobility:tier-mobility-system-api
+  name: TIER System API
+  description: System-level metadata and pricing
+  humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/tier-mobility-system-api-openapi.yml
+  - type: GBFS
+    url: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-vehicle-schema.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-pricing-plan-schema.json
+  - type: JSONLD
+    url: json-ld/tier-mobility-context.jsonld
+  - type: SpectralRules
+    url: rules/tier-mobility-rules.yml
+  - type: Vocabulary
+    url: vocabulary/tier-mobility-vocabulary.yml
+  - type: Plans
+    url: plans/tier-mobility-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tier-mobility-rate-limits.yml
+  - type: FinOps
+    url: finops/tier-mobility-finops.yml
+  - type: Examples
+    url: examples/tier-mobility-gbfs-discovery-example.json
+  - type: Examples
+    url: examples/tier-mobility-free-bike-status-example.json
+  - type: Examples
+    url: examples/tier-mobility-vehicle-types-example.json
+  - type: Examples
+    url: examples/tier-mobility-pricing-plans-example.json
+  - type: Standards
+    url: https://github.com/MobilityData/gbfs
+- aid: tier-mobility:tier-mobility-vehicles-api
+  name: TIER Vehicles API
+  description: Vehicle inventory, types, and real-time status
+  humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  tags:
+  - Vehicles
+  properties:
+  - type: OpenAPI
+    url: openapi/tier-mobility-vehicles-api-openapi.yml
+  - type: GBFS
+    url: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-vehicle-schema.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-pricing-plan-schema.json
+  - type: JSONLD
+    url: json-ld/tier-mobility-context.jsonld
+  - type: SpectralRules
+    url: rules/tier-mobility-rules.yml
+  - type: Vocabulary
+    url: vocabulary/tier-mobility-vocabulary.yml
+  - type: Plans
+    url: plans/tier-mobility-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tier-mobility-rate-limits.yml
+  - type: FinOps
+    url: finops/tier-mobility-finops.yml
+  - type: Examples
+    url: examples/tier-mobility-gbfs-discovery-example.json
+  - type: Examples
+    url: examples/tier-mobility-free-bike-status-example.json
+  - type: Examples
+    url: examples/tier-mobility-vehicle-types-example.json
+  - type: Examples
+    url: examples/tier-mobility-pricing-plans-example.json
+  - type: Standards
+    url: https://github.com/MobilityData/gbfs
+- aid: tier-mobility:tier-mobility-zones-api
+  name: TIER Zones API
+  description: Geofencing rules and operational zones
+  humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  tags:
+  - Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/tier-mobility-zones-api-openapi.yml
+  - type: GBFS
+    url: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-vehicle-schema.json
+  - type: JSONSchema
+    url: json-schema/tier-mobility-pricing-plan-schema.json
+  - type: JSONLD
+    url: json-ld/tier-mobility-context.jsonld
+  - type: SpectralRules
+    url: rules/tier-mobility-rules.yml
+  - type: Vocabulary
+    url: vocabulary/tier-mobility-vocabulary.yml
+  - type: Plans
+    url: plans/tier-mobility-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tier-mobility-rate-limits.yml
+  - type: FinOps
+    url: finops/tier-mobility-finops.yml
+  - type: Examples
+    url: examples/tier-mobility-gbfs-discovery-example.json
+  - type: Examples
+    url: examples/tier-mobility-free-bike-status-example.json
+  - type: Examples
+    url: examples/tier-mobility-vehicle-types-example.json
+  - type: Examples
+    url: examples/tier-mobility-pricing-plans-example.json
+  - type: Standards
+    url: https://github.com/MobilityData/gbfs
 common:
   - type: AgenticAccess
     url: agentic-access/tier-mobility-agentic-access.yml
