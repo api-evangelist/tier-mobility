@@ -1,0 +1,22 @@
+{
+  "provider": "tier-mobility",
+  "sources": [
+    "tier-mobility-discovery-api-openapi.yml",
+    "tier-mobility-stations-api-openapi.yml",
+    "tier-mobility-system-api-openapi.yml",
+    "tier-mobility-vehicles-api-openapi.yml",
+    "tier-mobility-zones-api-openapi.yml"
+  ],
+  "outputs": [
+    "tier-mobility-discovery-api-openapi.yml",
+    "tier-mobility-stations-api-openapi.yml",
+    "tier-mobility-system-api-openapi.yml",
+    "tier-mobility-vehicles-api-openapi.yml",
+    "tier-mobility-zones-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
