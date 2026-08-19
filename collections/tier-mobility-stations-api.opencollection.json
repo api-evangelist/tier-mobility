@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIER / Dott GBFS Discovery Stations API",
+    "version": "2.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Station Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/station_information.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Static station definitions (where stations are deployed in the system)."
+        },
+        {
+          "info": {
+            "name": "Get Station Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/station_status.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Real-time docking station availability and vehicle counts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

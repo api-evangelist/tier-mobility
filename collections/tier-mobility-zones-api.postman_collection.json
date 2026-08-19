@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "a111249a-b268-4091-920b-cc3f3f693355",
+      "name": "Zones",
+      "description": {
+        "content": "Geofencing rules and operational zones",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eff7054d-e5a3-4350-9950-9f87a1d4cedc",
+          "name": "Get Geofencing Zones",
+          "request": {
+            "name": "Get Geofencing Zones",
+            "description": {
+              "content": "GeoJSON FeatureCollection describing no-ride, no-park, low-speed, and operational zones within the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "geofencing_zones.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af733474-eeee-4eb6-be82-65194a0e367b",
+              "name": "Geofencing zones feed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "geofencing_zones.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 2696,\n  \"ttl\": 2967,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"geofencing_zones\": {\n      \"type\": \"FeatureCollection\",\n      \"features\": [\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {},\n          \"properties\": {\n            \"name\": \"string\",\n            \"start\": 35,\n            \"end\": 6041,\n            \"rules\": [\n              {\n                \"vehicle_type_id\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"ride_allowed\": false,\n                \"ride_through_allowed\": true,\n                \"maximum_speed_kph\": 3520,\n                \"station_parking\": false\n              },\n              {\n                \"vehicle_type_id\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"ride_allowed\": false,\n                \"ride_through_allowed\": true,\n                \"maximum_speed_kph\": 8722,\n                \"station_parking\": false\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {},\n          \"properties\": {\n            \"name\": \"string\",\n            \"start\": 5706,\n            \"end\": 3145,\n            \"rules\": [\n              {\n                \"vehicle_type_id\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"ride_allowed\": false,\n                \"ride_through_allowed\": true,\n                \"maximum_speed_kph\": 144,\n                \"station_parking\": false\n              },\n              {\n                \"vehicle_type_id\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"ride_allowed\": false,\n                \"ride_through_allowed\": false,\n                \"maximum_speed_kph\": 8896,\n                \"station_parking\": false\n              }\n            ]\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gbfs.api.ridedott.com/public/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "67edab50-8505-4be6-85f8-5ce9425ed772",
+    "name": "TIER / Dott GBFS Discovery Zones API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate \"system\" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.\n\nContact Support:\n Name: Dott (formerly TIER)",
+      "type": "text/plain"
+    }
+  }
+}

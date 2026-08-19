@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "dbdb15b7-9a6c-46a6-a014-1b867a72905a",
+      "name": "Stations",
+      "description": {
+        "content": "Station information and availability",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da40025e-1d07-4439-8939-6ca922e63ab8",
+          "name": "Get Station Information",
+          "request": {
+            "name": "Get Station Information",
+            "description": {
+              "content": "Static station definitions (where stations are deployed in the system).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "station_information.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4356710-f98c-4eca-b006-3db4ab2b617a",
+              "name": "Station information feed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "station_information.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 372,\n  \"ttl\": 6898,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"stations\": [\n      {\n        \"station_id\": \"string\",\n        \"name\": \"string\",\n        \"lat\": 4573.31865895696,\n        \"lon\": 7234.845448311516,\n        \"capacity\": 1178\n      },\n      {\n        \"station_id\": \"string\",\n        \"name\": \"string\",\n        \"lat\": 9695.614632223118,\n        \"lon\": 4184.8571866559305,\n        \"capacity\": 7075\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50365f88-28d0-48fc-84df-81130d9d48a0",
+          "name": "Get Station Status",
+          "request": {
+            "name": "Get Station Status",
+            "description": {
+              "content": "Real-time docking station availability and vehicle counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "station_status.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "442eb002-6277-4d12-afae-b3e04fabde7f",
+              "name": "Station status feed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "station_status.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 8153,\n  \"ttl\": 9694,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"stations\": [\n      {\n        \"station_id\": \"string\",\n        \"num_bikes_available\": 2782,\n        \"num_docks_available\": 3320,\n        \"is_installed\": true,\n        \"is_renting\": false,\n        \"is_returning\": false,\n        \"last_reported\": 274\n      },\n      {\n        \"station_id\": \"string\",\n        \"num_bikes_available\": 9218,\n        \"num_docks_available\": 9329,\n        \"is_installed\": false,\n        \"is_renting\": true,\n        \"is_returning\": true,\n        \"last_reported\": 6480\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gbfs.api.ridedott.com/public/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6dc7c22a-cc4c-43fb-9097-2612363037f1",
+    "name": "TIER / Dott GBFS Discovery Stations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate \"system\" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.\n\nContact Support:\n Name: Dott (formerly TIER)",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "011e3e03-d102-40c4-b3b5-359fc210e83d",
+      "name": "System",
+      "description": {
+        "content": "System-level metadata and pricing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "25ae2322-710c-488a-9876-a033fed53582",
+          "name": "Get System Information",
+          "request": {
+            "name": "Get System Information",
+            "description": {
+              "content": "Returns operator name, language, timezone, rental app deep links, and system identifier for the given city.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "system_information.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60bc7b9b-0648-4eca-ac2c-ec89d1680a22",
+              "name": "System information feed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "system_information.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 6241,\n  \"ttl\": 6741,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"system_id\": \"string\",\n    \"language\": \"string\",\n    \"name\": \"string\",\n    \"timezone\": \"string\",\n    \"rental_apps\": {\n      \"android\": {\n        \"discovery_uri\": \"string\",\n        \"store_uri\": \"http://NTk.iplrTKw5zgXtj7m\"\n      },\n      \"ios\": {\n        \"discovery_uri\": \"string\",\n        \"store_uri\": \"http://XxSbHZSdDgHte.mmsqk9bnQR4qcCp,P8zC85dCP8-rcepBEBwP5\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2aa5feb4-444a-49f8-9f6f-112c5df68b36",
+          "name": "Get System Pricing Plans",
+          "request": {
+            "name": "Get System Pricing Plans",
+            "description": {
+              "content": "Returns unlock price, per-minute rate, currency, and plan IDs for each vehicle type in the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "system_pricing_plans.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "488a1e72-910a-4f38-9e06-013086ab4627",
+              "name": "Pricing plans feed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "system_pricing_plans.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 9669,\n  \"ttl\": 4790,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"plans\": [\n      {\n        \"plan_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"currency\": \"string\",\n        \"price\": 5808.994845254491,\n        \"is_taxable\": false,\n        \"per_min_pricing\": [\n          {\n            \"interval\": 4634,\n            \"rate\": 3908.7676074678957,\n            \"start\": 7397\n          },\n          {\n            \"interval\": 8035,\n            \"rate\": 7878.784481176123,\n            \"start\": 6077\n          }\n        ]\n      },\n      {\n        \"plan_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"currency\": \"string\",\n        \"price\": 7136.53080018441,\n        \"is_taxable\": false,\n        \"per_min_pricing\": [\n          {\n            \"interval\": 3280,\n            \"rate\": 7029.621595142046,\n            \"start\": 5905\n          },\n          {\n            \"interval\": 3225,\n            \"rate\": 4408.046726940057,\n            \"start\": 6902\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gbfs.api.ridedott.com/public/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "03fa5463-69af-47e4-82c4-8044e767c2ab",
+    "name": "TIER / Dott GBFS Discovery System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate \"system\" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.\n\nContact Support:\n Name: Dott (formerly TIER)",
+      "type": "text/plain"
+    }
+  }
+}

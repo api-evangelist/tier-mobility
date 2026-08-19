@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIER / Dott GBFS Discovery Zones API",
+    "version": "2.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Geofencing Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/geofencing_zones.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "GeoJSON FeatureCollection describing no-ride, no-park, low-speed, and operational zones within the system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "566a9849-6ac2-4d51-9f4a-497ae2b1db80",
+      "name": "Vehicles",
+      "description": {
+        "content": "Vehicle inventory, types, and real-time status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6640d1b8-f43a-430b-97ea-816c4bb15654",
+          "name": "Get Vehicle Types",
+          "request": {
+            "name": "Get Vehicle Types",
+            "description": {
+              "content": "Returns the form factors (scooter, bicycle), propulsion types, max range, and pricing-plan associations for vehicles operated in the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "vehicle_types.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eed4c57c-1a25-4f1d-a0fd-2059a19519fa",
+              "name": "Vehicle types feed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "vehicle_types.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 496,\n  \"ttl\": 2140,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"vehicle_types\": [\n      {\n        \"vehicle_type_id\": \"string\",\n        \"form_factor\": \"bicycle\",\n        \"propulsion_type\": \"electric\",\n        \"max_range_meters\": 4013,\n        \"pricing_plan_ids\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"vehicle_type_id\": \"string\",\n        \"form_factor\": \"car\",\n        \"propulsion_type\": \"electric_assist\",\n        \"max_range_meters\": 4084,\n        \"pricing_plan_ids\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5030d13d-8aa9-4898-a732-dd956a394ec1",
+          "name": "Get Free Vehicle Status",
+          "request": {
+            "name": "Get Free Vehicle Status",
+            "description": {
+              "content": "Real-time list of free-floating vehicles available for rent, including position, battery level (`current_fuel_percent`), remaining range, pricing plan, and rental URIs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "free_bike_status.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b73a7951-060b-4352-8a16-1d51aa7ad250",
+              "name": "Free vehicle status feed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "free_bike_status.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 7254,\n  \"ttl\": 941,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"bikes\": [\n      {\n        \"bike_id\": \"string\",\n        \"lat\": 7241.760471951157,\n        \"lon\": 8341.454211092747,\n        \"is_reserved\": false,\n        \"is_disabled\": false,\n        \"current_range_meters\": 7939,\n        \"current_fuel_percent\": 5685.260593385092,\n        \"vehicle_type_id\": \"string\",\n        \"pricing_plan_id\": \"string\",\n        \"last_reported\": 3225,\n        \"rental_uris\": {\n          \"android\": \"http://YylBckfdPKtzRzeK.cvDvgUIPC9VYAoSGn\",\n          \"ios\": \"https://iwjuavsjeMHjhlYWCQfEOddS.rxXWTtaYuBBSlm,ePtQBHBZSkRdpsTV.CAN+6\",\n          \"web\": \"http://oIoTPZcpZodjwMGpWxukjZZ.zud\"\n        }\n      },\n      {\n        \"bike_id\": \"string\",\n        \"lat\": 1251.3861349546219,\n        \"lon\": 8835.12955802694,\n        \"is_reserved\": true,\n        \"is_disabled\": true,\n        \"current_range_meters\": 5460,\n        \"current_fuel_percent\": 9143.811757551231,\n        \"vehicle_type_id\": \"string\",\n        \"pricing_plan_id\": \"string\",\n        \"last_reported\": 2264,\n        \"rental_uris\": {\n          \"android\": \"https://voEoFQvzDrhdm.gsg5obhEHr+T\",\n          \"ios\": \"http://Ietb.lmdgHqJE..2p0NzuDlnWLWylvGKf8qfbNFHw\",\n          \"web\": \"http://Vb.gqvgoAnX1cWZaV,Ak2UkjdPfi9xlw1\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gbfs.api.ridedott.com/public/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a4f531f7-6c38-4d4b-8070-2109f2117561",
+    "name": "TIER / Dott GBFS Discovery Vehicles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate \"system\" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.\n\nContact Support:\n Name: Dott (formerly TIER)",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "item": [
+    {
+      "id": "45726027-87ba-4eff-a25f-975100e21b66",
+      "name": "Discovery",
+      "description": {
+        "content": "GBFS discovery and versioning",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4a85b9f-6aaf-4d48-96be-0b41b3ae9880",
+          "name": "List GBFS Versions",
+          "request": {
+            "name": "List GBFS Versions",
+            "description": {
+              "content": "Returns all GBFS schema versions exposed by Dott across systems.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gbfs_versions.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b20ab45-bce1-4de3-952f-35aa290f607e",
+              "name": "GBFS versions document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gbfs_versions.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 7135,\n  \"ttl\": 5936,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"versions\": [\n      {\n        \"version\": \"string\",\n        \"url\": \"http://MMWdudifJYybgBgS.vog,XtoUbyWpbHIxaNEvIgXc34ic,32OO5rX\"\n      },\n      {\n        \"version\": \"string\",\n        \"url\": \"http://eiGWYbX.xiHIP13HnICVGNJbVZyJygZeL0SeS,JUScwRwsYpwXqUDfHm6x7oXX8JfP\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdb98772-3edf-4f5d-a8b3-8a5d9eafdee7",
+          "name": "Get GBFS Discovery Document",
+          "request": {
+            "name": "Get GBFS Discovery Document",
+            "description": {
+              "content": "Returns the GBFS auto-discovery document for a given city/system, listing every available feed URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":system_id",
+                "gbfs.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_id",
+                  "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cd09a2a-bbfe-4181-a46d-46ee7df95583",
+              "name": "GBFS discovery document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":system_id",
+                    "gbfs.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_id",
+                      "description": "(Required) The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last_updated\": 8042,\n  \"ttl\": 4318,\n  \"version\": \"2.3\",\n  \"data\": {\n    \"key_0\": {\n      \"feeds\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"http://ddLJiFxCHYgrCeiRvAUhGihGGxOSyz.vlOaX-sJz3Yq8oWyzXqCNrxSl4dopIy5IDkFbg\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"https://csGkMUNPjOjRFWLszuCDHplgwp.rabVdeJJ3fg\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"feeds\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"http://zYipsPeDY.uukhJ4xIyTs\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"https://phSutUe.sovlY6BqtLyzvn7FBqxzigUxmLeKGBnK2xN-OPy3,Xo2ULCx8izWnYeTSb\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gbfs.api.ridedott.com/public/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "203a8d8a-9ff4-4007-9904-82e618a1604e",
+    "name": "TIER / Dott GBFS Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate \"system\" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.\n\nContact Support:\n Name: Dott (formerly TIER)",
+      "type": "text/plain"
+    }
+  }
+}

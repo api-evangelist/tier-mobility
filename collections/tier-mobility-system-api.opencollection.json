@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIER / Dott GBFS Discovery System API",
+    "version": "2.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get System Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/system_information.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Returns operator name, language, timezone, rental app deep links, and system identifier for the given city."
+        },
+        {
+          "info": {
+            "name": "Get System Pricing Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gbfs.api.ridedott.com/public/v2/:system_id/system_pricing_plans.json",
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path",
+                "description": "The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry."
+              }
+            ]
+          },
+          "docs": "Returns unlock price, per-minute rate, currency, and plan IDs for each vehicle type in the system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
