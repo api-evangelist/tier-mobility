@@ -1,0 +1,35 @@
+slug: tier-mobility
+provider: TIER
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Automotive & Mobility
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: System
+  spec_file: tier-mobility-system-api-openapi.yml
+  capability_id: BC-3490.10
+  capability_id_l1: BC-3490
+  capability_name: Mobility Service Catalogue Management
+  confidence: 0.78
+  evidence: GET /{system_id}/system_pricing_plans.json getSystemPricingPlans; schemas SystemPricingPlans,
+    SystemInformation
+  reason: System information plus pricing plans per city system maps directly onto mobility service catalogue
+    management, defined as service types, pricing plans and geographic coverage.
+- tag: Vehicles
+  spec_file: tier-mobility-vehicles-api-openapi.yml
+  capability_id: BC-3490.30
+  capability_id_l1: BC-3490
+  capability_name: Shared Fleet Operations
+  confidence: 0.72
+  evidence: GET /{system_id}/vehicle_types.json getVehicleTypes; GET /{system_id}/free_bike_status.json
+    Get Free Vehicle Status
+  reason: Free-floating vehicle status and vehicle types expose the state and composition of the shared
+    e-scooter/e-bike fleet — shared fleet operations for a micromobility operator.

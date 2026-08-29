@@ -243,6 +243,9 @@ apis:
   - type: Standards
     url: https://github.com/MobilityData/gbfs
 common:
+  - type: CapabilityMap
+    url: capabilities/tier-mobility-capability-edges.yml
+    name: TIER Business Capability Map
   - type: AgenticAccess
     url: agentic-access/tier-mobility-agentic-access.yml
   - type: DomainSecurity
