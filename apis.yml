@@ -12,6 +12,18 @@ description: >-
   `system_id` per city. There is no consumer authentication or paid API tier; feeds are open data consumed by city
   regulators, MaaS aggregators, and trip-planning apps.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: unknown
