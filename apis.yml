@@ -53,13 +53,14 @@ tags:
 - Real-Time
 url: https://raw.githubusercontent.com/api-evangelist/tier-mobility/refs/heads/main/apis.yml
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: tier-mobility:tier-mobility-discovery-api
   name: TIER Discovery API
   description: GBFS discovery and versioning
   humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  baseURL: https://gbfs.api.ridedott.com/public/v2
   tags:
   - Discovery
   properties:
@@ -97,6 +98,7 @@ apis:
   name: TIER Stations API
   description: Station information and availability
   humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  baseURL: https://gbfs.api.ridedott.com/public/v2
   tags:
   - Stations
   properties:
@@ -134,6 +136,7 @@ apis:
   name: TIER System API
   description: System-level metadata and pricing
   humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  baseURL: https://gbfs.api.ridedott.com/public/v2
   tags:
   - System
   properties:
@@ -171,6 +174,7 @@ apis:
   name: TIER Vehicles API
   description: Vehicle inventory, types, and real-time status
   humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  baseURL: https://gbfs.api.ridedott.com/public/v2
   tags:
   - Vehicles
   properties:
@@ -208,6 +212,7 @@ apis:
   name: TIER Zones API
   description: Geofencing rules and operational zones
   humanURL: https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json
+  baseURL: https://gbfs.api.ridedott.com/public/v2
   tags:
   - Zones
   properties:
@@ -253,7 +258,7 @@ apis:
   - Mobility
   properties:
   - type: Authentication
-    url: authentication/tier-authentication.yml
+    url: authentication/tier-mobility-authentication.yml
   - type: TermsOfService
     url: https://ridedott.com/api-licence/
 common:
@@ -267,15 +272,15 @@ common:
 - type: Website
   url: https://ridedott.com/
 - type: Company
-  url: https://ridedott.com/about
+  url: https://ridedott.com/the-dott-way/
 - type: Newsroom
-  url: https://ridedott.com/press
+  url: https://ridedott.com/press-release/
 - type: Careers
-  url: https://ridedott.com/careers
+  url: https://ridedott.com/join-us/
 - type: PrivacyPolicy
-  url: https://ridedott.com/privacy
+  url: https://ridedott.com/privacy/
 - type: TermsOfService
-  url: https://ridedott.com/terms
+  url: https://ridedott.com/terms-and-conditions/
 - type: Support
   url: https://help.ridedott.com/
 - type: iOSApp
@@ -317,7 +322,20 @@ common:
   updated: '2026-05-25'
 - type: Blog
   url: https://ridedott.com/blog/
+- type: WellKnown
+  url: well-known/tier-mobility-well-known.yml
+- type: Conformance
+  url: conformance/tier-mobility-conformance.yml
+- type: LLMsTxt
+  url: llms/tier-mobility-llms.txt
+- type: GitHubOrganization
+  url: https://github.com/ridedott
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
   url: https://apievangelist.com
+x-enrichment:
+  date: '2026-09-16'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v3
