@@ -1,0 +1,59 @@
+generated: '2026-09-16'
+method: probed
+source: live anonymous GETs of /.well-known/* on every host in apis.yml and the OpenAPI servers[]
+note: >-
+  ridedott.com (and www., which redirects to it) serves real OAuth authorization-server and
+  protected-resource metadata, emitted by the WordPress MCP Adapter on the corporate site for
+  https://ridedott.com/wp-json/mcp/mcp-oauth-server (its authorization_servers names ridedott.com
+  itself, so no third host). Everything else 404s. gbfs.api.ridedott.com answers 401 on every
+  non-public path. help.ridedott.com (Elevio) and tier.app / www.tier.app return HTML for every path
+  (SPA / redirect to ridedott.com home) — recorded as misses, not documents.
+hosts:
+- host: ridedott.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json; charset=UTF-8
+    file: tier-mobility-oauth-authorization-server.json
+    note: 301 to trailing-slash path, then 200
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json; charset=UTF-8
+    file: tier-mobility-oauth-protected-resource.json
+    note: 301 to trailing-slash path, then 200
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/mcp.json, status: 404}
+- host: www.ridedott.com
+  note: redirects to ridedott.com; same results
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 200, file: tier-mobility-oauth-authorization-server.json}
+  - {path: /.well-known/oauth-protected-resource, status: 200, file: tier-mobility-oauth-protected-resource.json}
+  - {path: /.well-known/api-catalog, status: 404}
+- host: gbfs.api.ridedott.com
+  documents:
+  - {path: /.well-known/security.txt, status: 401}
+  - {path: /.well-known/openid-configuration, status: 401}
+  - {path: /.well-known/oauth-authorization-server, status: 401}
+  - {path: /.well-known/oauth-protected-resource, status: 401}
+  - {path: /.well-known/api-catalog, status: 401}
+  - {path: /.well-known/ai-plugin.json, status: 401}
+  - {path: /.well-known/agent-card.json, status: 401}
+  - {path: /.well-known/agent.json, status: 401}
+- host: help.ridedott.com
+  note: every path redirects to ridedott.elevio.help and returns an HTML help-center page (soft-200) — treated as a miss
+  documents:
+  - {path: /.well-known/security.txt, status: 200, content_type: text/html, served: false}
+  - {path: /.well-known/api-catalog, status: 200, content_type: text/html, served: false}
+  - {path: /.well-known/agent-card.json, status: 200, content_type: text/html, served: false}
+- host: tier.app
+  note: legacy TIER domain; every path redirects to the ridedott.com home page (soft-200) — treated as a miss
+  documents:
+  - {path: /.well-known/security.txt, status: 200, content_type: text/html, served: false}
+  - {path: /.well-known/api-catalog, status: 200, content_type: text/html, served: false}
+  - {path: /.well-known/agent-card.json, status: 200, content_type: text/html, served: false}

@@ -1,0 +1,29 @@
+generated: '2026-09-16'
+method: probed
+source: https://gbfs.api.ridedott.com/public/v2/gbfs_versions.json
+conformance:
+- id: gbfs
+  name: General Bikeshare Feed Specification (MobilityData)
+  version: '2.3'
+  conforms: true
+  domain_standard: true
+  evidence: >-
+    https://gbfs.api.ridedott.com/public/v2/gbfs_versions.json (HTTP 200) declares "version": "2.3";
+    https://gbfs.api.ridedott.com/public/v2/berlin/gbfs.json (HTTP 200) lists the GBFS 2.3 feeds
+    gbfs_versions, free_bike_status, geofencing_zones, system_information, system_pricing_plans,
+    vehicle_types, station_information, station_status. Dott systems are also listed in the
+    MobilityData systems registry (github.com/MobilityData/gbfs systems.csv).
+- id: oauth2
+  conforms: true
+  scope: WordPress MCP Adapter on ridedott.com only (not the data API)
+  evidence: https://ridedott.com/.well-known/oauth-authorization-server (HTTP 200, RFC 8414 metadata, PKCE S256)
+- id: rfc9728
+  conforms: true
+  scope: WordPress MCP Adapter on ridedott.com only
+  evidence: https://ridedott.com/.well-known/oauth-protected-resource (HTTP 200); 401 carries WWW-Authenticate resource_metadata
+- id: rfc9457
+  conforms: false
+  evidence: 'gbfs.api.ridedott.com errors are application/json {"error": "..."} bodies, not problem+json (probed 401/403/405)'
+- id: oidc
+  conforms: false
+  evidence: https://ridedott.com/.well-known/openid-configuration returned 404

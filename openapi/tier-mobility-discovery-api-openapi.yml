@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: TIER / Dott GBFS Discovery API
   version: '2.3'
-  description: 'Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems. After the 2024 TIER + Dott merger, all GBFS feeds are served under the unified ridedott.com infrastructure at https://gbfs.api.ridedott.com/public/v2. Each city or zone is a separate "system" identified by a slug (e.g. `berlin`, `paris`, `london`, `madrid`, `dubai`). The API exposes a discovery document plus a standard set of GBFS feeds: system information, vehicle types, station information, station status, free-floating vehicle status, geofencing zones, and system pricing plans. All endpoints are unauthenticated and return JSON.'
+  description: Public GBFS (General Bikeshare Feed Specification) 2.3 endpoints for TIER / Dott shared micromobility systems.
   contact:
     name: Dott (formerly TIER)
     url: https://ridedott.com/
@@ -44,16 +44,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/GbfsDiscovery'
 components:
-  parameters:
-    SystemId:
-      name: system_id
-      in: path
-      required: true
-      description: The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry.
-      schema:
-        type: string
-        example: berlin
   schemas:
+    FeedMeta:
+      type: object
+      required:
+      - last_updated
+      - ttl
+      - version
+      properties:
+        last_updated:
+          type: integer
+          format: int64
+          description: POSIX timestamp when the feed was last updated.
+        ttl:
+          type: integer
+          description: Seconds until the next regeneration.
+        version:
+          type: string
+          example: '2.3'
+    GbfsVersions:
+      allOf:
+      - $ref: '#/components/schemas/FeedMeta'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              versions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    version:
+                      type: string
+                    url:
+                      type: string
+                      format: uri
     GbfsDiscovery:
       allOf:
       - $ref: '#/components/schemas/FeedMeta'
@@ -74,38 +100,12 @@ components:
                       url:
                         type: string
                         format: uri
-    GbfsVersions:
-      allOf:
-      - $ref: '#/components/schemas/FeedMeta'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              versions:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    version:
-                      type: string
-                    url:
-                      type: string
-                      format: uri
-    FeedMeta:
-      type: object
-      required:
-      - last_updated
-      - ttl
-      - version
-      properties:
-        last_updated:
-          type: integer
-          format: int64
-          description: POSIX timestamp when the feed was last updated.
-        ttl:
-          type: integer
-          description: Seconds until the next regeneration.
-        version:
-          type: string
-          example: '2.3'
+  parameters:
+    SystemId:
+      name: system_id
+      in: path
+      required: true
+      description: The Dott/TIER system slug, e.g. `berlin`, `paris`, `london`, `madrid`, `rome`, `brussels`, `dubai`. Listed in the MobilityData GBFS systems registry.
+      schema:
+        type: string
+        example: berlin
